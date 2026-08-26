@@ -1,0 +1,62 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1783948462028,
+      "tag": "20260713131422_init",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1787682894123,
+      "tag": "20260825183454_analyst_applications_profiles",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1787685441243,
+      "tag": "20260825191721_api_keys_signals_webhooks",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1787685678815,
+      "tag": "20260825192118_add_secret_encrypted_column",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1787685700492,
+      "tag": "20260825192140_drop_secret_hash_column",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1787686850455,
+      "tag": "20260825194050_subscriptions",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1787687392623,
+      "tag": "20260825194952_signal_deliveries",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1787717815680,
+      "tag": "20260826041655_broker_execution",
+      "breakpoints": true
+    }
+  ]
+}

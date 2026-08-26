@@ -1,0 +1,62 @@
+"use client";
+import React, { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
+import { httpRequest } from "@/lib/httpClient";
+import type { ApiResponse } from "@/types";
+
+interface PageData {
+  title: string;
+  body: string;
+}
+
+const DynamicPage: React.FC = () => {
+  const params = useParams();
+  const slug = params.slug as string;
+  const [data, setData] = useState<PageData | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchPage = async () => {
+      try {
+        const res = await httpRequest<ApiResponse>(
+          "get",
+          `/page/${encodeURIComponent(slug)}`,
+        );
+        if (res.status === 1) {
+          setData(res.data);
+        }
+      } catch (err) {
+        console.error("Page load failed", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    if (slug) {
+      fetchPage();
+    }
+  }, [slug]);
+
+  if (loading) return <div>Loading...</div>;
+
+  if (!data) return <div>Page not found</div>;
+
+  return (
+    <>
+      {/* Main content area */}
+      <div className="w-full">
+        <div className="px-3 sm:px-6 lg:px-15">
+          <h1 className="text-xl font-bold tracking-tight p-3">{data.title}</h1>
+
+          <div className="w-full p-4 sm:p-6 md:p-6 mt-4 sm:mt-6 rounded-lg shadow bg-card text-card-foreground">
+            <div
+              className="leading-relaxed"
+              dangerouslySetInnerHTML={{ __html: data.body }}
+            />
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default DynamicPage;
