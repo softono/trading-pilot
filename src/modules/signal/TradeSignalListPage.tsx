@@ -71,15 +71,26 @@ function SignalCard({ row }: { row: SignalListItem }) {
   );
 }
 
-export default function TradeSignalListPage() {
+interface TradeSignalListPageProps {
+  analystId?: string;
+}
+
+export default function TradeSignalListPage({
+  analystId,
+}: TradeSignalListPageProps) {
   return (
     <div className="px-3 sm:px-6 lg:px-15 py-6">
-      <h1 className="mb-6 text-2xl font-bold tracking-tight">Trade Signals</h1>
+      <h1 className="mb-6 text-2xl font-bold tracking-tight">
+        {analystId ? "Signals" : "Trade Signals"}
+      </h1>
       <TsGrid<SignalListItem>
         columns={columns}
-        queryKey={["trade-signals"]}
+        queryKey={["trade-signals", analystId ?? "all"]}
         fetcher={(params) =>
-          httpRequest<ApiResult>("get", "trade-signals", params)
+          httpRequest<ApiResult>("get", "trade-signals", {
+            ...params,
+            ...(analystId ? { analyst_id: analystId } : {}),
+          })
         }
         renderCard={(row) => <SignalCard row={row} />}
         getRowId={(row) => row.id}

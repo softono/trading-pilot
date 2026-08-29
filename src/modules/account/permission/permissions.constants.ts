@@ -253,6 +253,28 @@ const PERMISSIONS: PermissionItem[] = [
       },
     ],
   },
+  {
+    title: "Signals",
+    key: "admin_signal",
+    list: [
+      {
+        title: "List",
+        key: "admin/signal",
+        route: "/admin/signals",
+      },
+    ],
+  },
+  {
+    title: "Executions",
+    key: "admin_execution",
+    list: [
+      {
+        title: "List",
+        key: "admin/execution",
+        route: "/admin/executions",
+      },
+    ],
+  },
 ];
 
 export default PERMISSIONS;

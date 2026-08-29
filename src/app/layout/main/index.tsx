@@ -19,6 +19,8 @@ export function MainLayout({ children }: MainLayoutProps) {
   const navLinks = [
     { title: "Home", href: "/", isActive: true },
     { title: "Trade Signals", href: "/trade-signals", isActive: true },
+    { title: "Analysts", href: "/analysts", isActive: true },
+    { title: "Pricing", href: "/pricing", isActive: true },
     { title: "Contact", href: "/contact", isActive: true },
     { title: "Blog", href: "/blog", isActive: true },
     ...(isAuthenticated
@@ -35,7 +37,7 @@ export function MainLayout({ children }: MainLayoutProps) {
           isAnalyst
             ? {
                 title: "Analyst Panel",
-                href: "/analyst/profile",
+                href: "/analyst/dashboard",
                 isActive: true,
               }
             : {

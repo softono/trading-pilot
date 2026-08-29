@@ -9,6 +9,7 @@ export const brokerSchema = z.enum([
   BROKER.GROWW,
   BROKER.DHAN,
   BROKER.DELTA,
+  BROKER.ANGELONE,
   BROKER.PAPER,
 ]);
 

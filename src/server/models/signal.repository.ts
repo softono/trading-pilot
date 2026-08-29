@@ -90,10 +90,13 @@ const PUBLIC_STATUSES = [
   "EXPIRED",
 ];
 
-export function listPublicSignals(search?: string) {
+export function listPublicSignals(search?: string, analystId?: string) {
   const conditions = [or(...PUBLIC_STATUSES.map((s) => eq(signals.status, s)))];
   if (search) {
     conditions.push(ilike(signals.symbol, `%${search}%`));
+  }
+  if (analystId) {
+    conditions.push(eq(signals.analyst_id, analystId));
   }
 
   return db

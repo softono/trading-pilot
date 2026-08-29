@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils";
 import type { ReactNode } from "react";
 
 const ANALYST_NAV_LINKS = [
+  { title: "Dashboard", href: "/analyst/dashboard" },
   { title: "Profile", href: "/analyst/profile" },
   { title: "API Keys", href: "/analyst/api-keys" },
   { title: "Settings", href: "/analyst/settings" },

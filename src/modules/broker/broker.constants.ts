@@ -2,6 +2,7 @@ export const BROKER = {
   GROWW: "groww",
   DHAN: "dhan",
   DELTA: "delta",
+  ANGELONE: "angelone",
   PAPER: "paper",
 } as const;
 
@@ -9,6 +10,7 @@ export const BROKER_LABEL = {
   groww: "Groww",
   dhan: "Dhan",
   delta: "Delta Exchange",
+  angelone: "Angel One",
   paper: "Paper Trading",
 } as const;
 
@@ -23,6 +25,7 @@ export const BROKER_SUPPORTED_MODES: Record<string, readonly string[]> = {
   groww: [BROKER_MODE.LIVE],
   dhan: [BROKER_MODE.LIVE, BROKER_MODE.SANDBOX],
   delta: [BROKER_MODE.LIVE, BROKER_MODE.SANDBOX],
+  angelone: [BROKER_MODE.LIVE],
   paper: [BROKER_MODE.PAPER],
 };
 
@@ -32,6 +35,7 @@ export const BROKER_INSTRUMENT_CLASSES: Record<string, readonly string[]> = {
   groww: ["equity"],
   dhan: ["equity"],
   delta: ["crypto"],
+  angelone: ["equity"],
   paper: ["equity", "crypto"],
 };
 

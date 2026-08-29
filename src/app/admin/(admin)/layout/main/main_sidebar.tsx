@@ -25,6 +25,8 @@ import {
   Newspaper,
   UserCheck,
   TrendingUp,
+  Radio,
+  XOctagon,
 } from "lucide-react";
 import config from "@/config";
 import { NavGroup, type NavGroupProps } from "./nav-group";
@@ -163,6 +165,18 @@ const sidebarData: SidebarData = {
           url: "/admin/analysts",
           icon: TrendingUp,
           permission: "admin/analyst",
+        },
+        {
+          title: "Signals",
+          url: "/admin/signals",
+          icon: Radio,
+          permission: "admin/signal",
+        },
+        {
+          title: "Executions",
+          url: "/admin/executions",
+          icon: XOctagon,
+          permission: "admin/execution",
         },
         {
           title: "Setting",

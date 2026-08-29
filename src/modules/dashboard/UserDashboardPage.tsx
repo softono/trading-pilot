@@ -12,6 +12,9 @@ import {
   Mail,
   ArrowRight,
   Loader2,
+  Radio,
+  Users,
+  Wallet,
 } from "lucide-react";
 
 export default function Dashboard() {
@@ -32,6 +35,24 @@ export default function Dashboard() {
   }
 
   const quickLinks = [
+    {
+      icon: Radio,
+      title: "Trade Signals",
+      desc: "Browse live signals from analysts",
+      href: "/trade-signals",
+    },
+    {
+      icon: Users,
+      title: "My Subscriptions",
+      desc: "Analysts you're subscribed to",
+      href: "/subscriptions",
+    },
+    {
+      icon: Wallet,
+      title: "Auto-Trading",
+      desc: "Broker connections and executions",
+      href: "/broker-connections",
+    },
     {
       icon: User,
       title: "My Profile",

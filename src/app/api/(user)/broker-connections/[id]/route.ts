@@ -4,6 +4,7 @@ import { withUserAuth } from "@/server/middleware/withUserAuth";
 import {
   updateMyConnection,
   deleteMyConnection,
+  withoutCredentials,
 } from "@/server/modules/broker/broker-connection.service";
 import { getConnectionForUser } from "@/server/models/broker-connection.repository";
 import { validateData } from "@/server/lib/validator";
@@ -27,8 +28,12 @@ async function getHandler(req: NextRequestWithUser, { params }: RouteContext) {
   const row = await getConnectionForUser(id, userId);
   if (!row) return sendError(404, "Connection not found");
 
-  const { credentials: _credentials, ...safe } = row;
-  return sendResult({ http_status: 200, status: 1, message: "ok", data: safe });
+  return sendResult({
+    http_status: 200,
+    status: 1,
+    message: "ok",
+    data: withoutCredentials(row),
+  });
 }
 
 async function patchHandler(

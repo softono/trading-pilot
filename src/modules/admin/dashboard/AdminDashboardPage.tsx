@@ -14,6 +14,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import PageHeader from "@/components/admin/PageHeader";
+import TradingDashboardStats from "@/modules/admin/dashboard/TradingDashboardStats";
 
 type UserSummary = {
   total: number;
@@ -196,6 +197,8 @@ export default function Dashboard() {
           </Card>
         </div>
       </div>
+
+      <TradingDashboardStats />
     </>
   );
 }

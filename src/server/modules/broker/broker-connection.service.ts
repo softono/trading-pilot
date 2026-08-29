@@ -22,8 +22,9 @@ const connectionSortMap = {
   created_at: brokerConnections.created_at,
 };
 
-function withoutCredentials(row: IBrokerConnection) {
-  const { credentials: _credentials, ...rest } = row;
+export function withoutCredentials(row: IBrokerConnection) {
+  const rest = { ...row };
+  delete (rest as Partial<IBrokerConnection>).credentials;
   return rest;
 }
 

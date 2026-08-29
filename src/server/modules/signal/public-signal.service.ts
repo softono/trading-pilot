@@ -12,9 +12,10 @@ import type { PaginationInput } from "@/components/tsgrid/pagination.validator";
 export async function listPublicSignalsService(
   body: PaginationInput,
   tz: string,
+  analystId?: string,
 ): Promise<ApiResult> {
   const search = (body.search?.value || "").trim();
-  const query = listPublicSignals(search || undefined);
+  const query = listPublicSignals(search || undefined, analystId);
 
   return Pagination.paginate(query, body, signalSortMap, {
     defaultSort: { field: "published_at", direction: "desc" },

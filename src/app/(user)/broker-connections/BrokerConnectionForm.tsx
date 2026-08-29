@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useQuery } from "@tanstack/react-query";
@@ -52,6 +51,12 @@ const CREDENTIAL_FIELDS: Record<
     { key: "apiKey", label: "API Key" },
     { key: "apiSecret", label: "API Secret" },
   ],
+  angelone: [
+    { key: "apiKey", label: "API Key" },
+    { key: "clientCode", label: "Client Code" },
+    { key: "password", label: "Password" },
+    { key: "totpSecret", label: "TOTP Secret" },
+  ],
   paper: [],
 };
 
@@ -88,7 +93,6 @@ export default function BrokerConnectionForm({
   });
   const connection = connectionRes?.data;
 
-  /* eslint-disable react-hooks/set-state-in-effect -- populating form from fetched connection */
   useEffect(() => {
     if (connection) {
       form.reset({
@@ -109,7 +113,6 @@ export default function BrokerConnectionForm({
       });
     }
   }, [connection, form]);
-  /* eslint-enable react-hooks/set-state-in-effect */
 
   const onSubmit = async (values: BrokerConnectionFormInput) => {
     try {
@@ -165,7 +168,8 @@ export default function BrokerConnectionForm({
                   field.onChange(v);
                   form.setValue(
                     "mode",
-                    BROKER_SUPPORTED_MODES[v]?.[0] ?? "live",
+                    (BROKER_SUPPORTED_MODES[v]?.[0] ??
+                      "live") as BrokerConnectionFormInput["mode"],
                   );
                   setCredentials({});
                 }}

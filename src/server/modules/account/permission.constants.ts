@@ -328,6 +328,30 @@ const PERMISSIONS: ServerPermissionGroup[] = [
       },
     ],
   },
+  {
+    title: "Signals",
+    key: "admin_signal",
+    list: [
+      {
+        title: "List",
+        key: "admin/signal",
+        route: "/admin/signals",
+        apis: ["GET /api/admin/signals"],
+      },
+    ],
+  },
+  {
+    title: "Executions",
+    key: "admin_execution",
+    list: [
+      {
+        title: "List",
+        key: "admin/execution",
+        route: "/admin/executions",
+        apis: ["GET /api/admin/executions"],
+      },
+    ],
+  },
 ];
 
 export default PERMISSIONS;

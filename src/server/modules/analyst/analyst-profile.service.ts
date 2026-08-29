@@ -114,15 +114,16 @@ export async function listAnalystsAdmin(
   });
 }
 
-export async function listPublicAnalysts(): Promise<ApiResult> {
-  const rows = await listPublicAnalystProfiles();
-  return {
-    http_status: 200,
-    status: 1,
-    message: "Analysts retrieved successfully",
-    data: rows.map((row) => ({
+export async function listPublicAnalysts(
+  body: PaginationInput,
+): Promise<ApiResult> {
+  const query = listPublicAnalystProfiles();
+
+  return Pagination.paginate(query, body, analystProfileSortMap, {
+    defaultSort: { field: "display_name", direction: "asc" },
+    mapRow: (row) => ({
       ...row,
       avatar: row.avatar ? getFileUrl(row.avatar) : null,
-    })),
-  };
+    }),
+  });
 }
